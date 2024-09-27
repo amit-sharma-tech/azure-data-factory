@@ -1,0 +1,86 @@
+{
+	"name": "008_setVariable",
+	"properties": {
+		"activities": [
+			{
+				"name": "Set variable String",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "x",
+					"value": "Hello this is set variable"
+				}
+			},
+			{
+				"name": "Set variable number",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "y",
+					"value": 1000
+				}
+			},
+			{
+				"name": "Set variable utc now",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "currentDate",
+					"value": {
+						"value": "@utcNow()",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set variable substract from now",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "substract from now",
+					"value": {
+						"value": "@subtractFromTime(utcNow(),1,'Day')",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"x": {
+				"type": "String"
+			},
+			"y": {
+				"type": "Integer"
+			},
+			"currentDate": {
+				"type": "String"
+			},
+			"substract from now": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-09-26T10:24:10Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,17 @@
+{
+	"name": "dsLookupJoin",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseConnection",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "creditCard"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

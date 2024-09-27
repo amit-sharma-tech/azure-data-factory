@@ -1,0 +1,35 @@
+{
+	"name": "018ppl_LookupJoinTable",
+	"properties": {
+		"activities": [
+			{
+				"name": "LookupExample",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "select * from creditCard limit",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "dsLookupJoin",
+						"type": "DatasetReference"
+					}
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2024-09-27T09:23:33Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

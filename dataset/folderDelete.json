@@ -1,0 +1,19 @@
+{
+	"name": "folderDelete",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "myADLSconn",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "DATA",
+				"fileSystem": "mycontainer"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

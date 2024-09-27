@@ -1,0 +1,19 @@
+{
+	"name": "dsdelete",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "myADLSconn",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "copyfile.txt",
+				"fileSystem": "mycontainer"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

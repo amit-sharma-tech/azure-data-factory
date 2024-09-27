@@ -1,0 +1,17 @@
+{
+	"name": "SinkSpecificTimeFrame",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseConnection",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "TimeSpecificTable"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
