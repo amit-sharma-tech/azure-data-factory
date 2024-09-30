@@ -1,0 +1,19 @@
+{
+	"name": "dsJsonSink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "myADLSconn",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "jsonFile",
+				"fileSystem": "mycontainer"
+			}
+		},
+		"schema": {}
+	}
+}
