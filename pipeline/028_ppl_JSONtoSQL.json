@@ -1,0 +1,589 @@
+{
+	"name": "028_ppl_JSONtoSQL",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['id']"
+								},
+								"sink": {
+									"name": "id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['type']"
+								},
+								"sink": {
+									"name": "type",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['actor']['id']"
+								},
+								"sink": {
+									"name": "id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['actor']['login']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['actor']['gravatar_id']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['actor']['url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['actor']['avatar_url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['repo']['id']"
+								},
+								"sink": {
+									"name": "id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['repo']['name']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['repo']['url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['ref']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['ref_type']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['master_branch']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['description']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['pusher_type']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['push_id']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['size']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['distinct_size']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['head']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['before']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['commits'][0]['sha']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['commits'][0]['author']['email']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['commits'][0]['author']['name']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['commits'][0]['message']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['commits'][0]['distinct']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['commits'][0]['url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['action']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['assets_url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['upload_url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['html_url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['id']"
+								},
+								"sink": {
+									"name": "id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['tag_name']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['target_commitish']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['name']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['draft']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['author']['login']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['author']['id']"
+								},
+								"sink": {
+									"name": "id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['author']['avatar_url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['author']['gravatar_id']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['author']['url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['author']['html_url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['author']['followers_url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['author']['following_url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['author']['gists_url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['author']['starred_url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['author']['subscriptions_url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['author']['organizations_url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['author']['repos_url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['author']['events_url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['author']['received_events_url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['author']['type']"
+								},
+								"sink": {
+									"name": "type",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['author']['site_admin']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['prerelease']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['created_at']"
+								},
+								"sink": {
+									"name": "created_at",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['published_at']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['assets'][0]['url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['assets'][0]['id']"
+								},
+								"sink": {
+									"name": "id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['assets'][0]['name']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['assets'][0]['label']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['assets'][0]['uploader']['login']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['assets'][0]['uploader']['id']"
+								},
+								"sink": {
+									"name": "id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['assets'][0]['uploader']['avatar_url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['assets'][0]['uploader']['gravatar_id']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['assets'][0]['uploader']['url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['assets'][0]['uploader']['html_url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['assets'][0]['uploader']['followers_url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['assets'][0]['uploader']['following_url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['assets'][0]['uploader']['gists_url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['assets'][0]['uploader']['starred_url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['assets'][0]['uploader']['subscriptions_url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['assets'][0]['uploader']['organizations_url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['assets'][0]['uploader']['repos_url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['assets'][0]['uploader']['events_url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['assets'][0]['uploader']['received_events_url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['assets'][0]['uploader']['type']"
+								},
+								"sink": {
+									"name": "type",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['assets'][0]['uploader']['site_admin']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['assets'][0]['content_type']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['assets'][0]['state']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['assets'][0]['size']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['assets'][0]['download_count']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['assets'][0]['created_at']"
+								},
+								"sink": {
+									"name": "created_at",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['assets'][0]['updated_at']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['assets'][0]['browser_download_url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['tarball_url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['zipball_url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['payload']['release']['body']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['public']"
+								},
+								"sink": {
+									"name": "public",
+									"type": "Boolean"
+								}
+							},
+							{
+								"source": {
+									"path": "$['created_at']"
+								},
+								"sink": {
+									"name": "created_at",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['org']['id']"
+								},
+								"sink": {
+									"name": "id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['org']['login']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['org']['gravatar_id']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['org']['url']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['org']['avatar_url']"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Json1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "dsSinkJsonToSql",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
