@@ -1,0 +1,52 @@
+{
+	"name": "dataflowExmp",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "dsReadExcel",
+						"type": "DatasetReference"
+					},
+					"name": "ReadExcelFile"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "dsSqlSink",
+						"type": "DatasetReference"
+					},
+					"name": "copyToDB"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          {First Name} as string,",
+				"          {Last Name} as string,",
+				"          Gender as string,",
+				"          Country as string,",
+				"          Age as integer,",
+				"          Date as date 'dd/MM/yyyy',",
+				"          Id as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> ReadExcelFile",
+				"ReadExcelFile sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     saveOrder: 1,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> copyToDB"
+			]
+		}
+	}
+}
